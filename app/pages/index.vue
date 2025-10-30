@@ -3,7 +3,7 @@
     <div class="max-w-4xl mx-auto px-4 py-8">
       <div class="text-center mb-12">
         <h1 class="text-5xl font-bold text-gray-900 mb-4">Welcome to Alhambian</h1>
-        <p class="text-xl text-gray-700">Your Nuxt 4 journey starts here!</p>
+        <p class="text-xl text-gray-700">Now with TypeScript! 🚀</p>
       </div>
       
       <div class="grid md:grid-cols-2 gap-8 mb-12">
@@ -12,15 +12,9 @@
           <p class="text-gray-600 mb-4">This is your main landing page with the new navigation.</p>
           <p class="text-gray-600">Notice how the "Home" link is highlighted in the navigation!</p>
         </div>
-        <div class="bg-white rounded-xl shadow-lg p-6">
-          <h2 class="text-2xl font-semibold mb-4 text-green-600">Features</h2>
-          <ul class="list-disc list-inside text-gray-600 space-y-2">
-            <li>Reusable Navigation Component</li>
-            <li>Active Route Styling</li>
-            <li>Responsive Design</li>
-            <li>Tailwind CSS Styling</li>
-          </ul>
-        </div>
+        
+        <!-- Add our typed counter component -->
+        <VisitCounter />
       </div>
 
       <div class="text-center">
@@ -34,3 +28,9 @@
     </div>
   </div>
 </template>
+
+<script setup lang="ts">
+// TypeScript: We can type page components too
+// This runs on the server side in Nuxt
+console.log('Home page loaded at:', new Date().toISOString())
+</script>

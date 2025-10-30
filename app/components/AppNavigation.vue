@@ -31,6 +31,7 @@
           <button 
             @click="toggleMobileMenu"
             class="text-gray-600 hover:text-blue-500 transition-colors duration-200"
+            aria-label="Toggle mobile menu"
           >
             <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path 
@@ -75,15 +76,29 @@
 </template>
 
 <script setup lang="ts">
-// Vue Reactivity - our first reactive state!
-const isMobileMenuOpen = ref(false)
+// Import Vue's ref function with TypeScript
+import { ref } from 'vue'
 
-// Methods to handle mobile menu
-const toggleMobileMenu = () => {
+// Define interface for component props (we'll use this later)
+interface NavigationProps {
+  // We can add props here in the future
+  // Example: logoText?: string
+}
+
+// TypeScript: Explicitly type our reactive variables
+const isMobileMenuOpen = ref<boolean>(false)
+
+// TypeScript: Type our functions - they return void (nothing)
+const toggleMobileMenu = (): void => {
   isMobileMenuOpen.value = !isMobileMenuOpen.value
 }
 
-const closeMobileMenu = () => {
+const closeMobileMenu = (): void => {
   isMobileMenuOpen.value = false
 }
+
+// We could define emits for parent communication
+// defineEmits<{
+//   'menu-toggle': [isOpen: boolean]
+// }>()
 </script>
