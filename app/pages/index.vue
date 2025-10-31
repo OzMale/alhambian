@@ -3,34 +3,85 @@
     <div class="max-w-4xl mx-auto px-4 py-8">
       <div class="text-center mb-12">
         <h1 class="text-5xl font-bold text-gray-900 mb-4">Welcome to Alhambian</h1>
-        <p class="text-xl text-gray-700">Now with TypeScript! 🚀</p>
+        <p class="text-xl text-gray-700">Learning Vue Props & TypeScript! 🚀</p>
       </div>
       
       <div class="grid md:grid-cols-2 gap-8 mb-12">
-        <div class="bg-white rounded-xl shadow-lg p-6">
-          <h2 class="text-2xl font-semibold mb-4 text-blue-600">Home Page</h2>
-          <p class="text-gray-600 mb-4">This is your main landing page with the new navigation.</p>
-          <p class="text-gray-600">Notice how the "Home" link is highlighted in the navigation!</p>
-        </div>
+        <UiCard title="Component Props" shadow="lg">
+          <p class="text-gray-600 mb-4">This card demonstrates component props and slots.</p>
+          <p class="text-gray-600 mb-6">We're passing props like <code>title</code> and <code>shadow</code> from parent to child.</p>
+          
+          <div class="flex gap-3 flex-wrap">
+            <UiButton 
+              variant="primary" 
+              size="md" 
+              label="Primary Button"
+              @click="handleButtonClick"
+            />
+            <UiButton 
+              variant="secondary" 
+              size="sm" 
+              label="Secondary"
+            />
+            <UiButton 
+              variant="outline" 
+              label="Outline"
+            />
+            <UiButton 
+              :disabled="true" 
+              label="Disabled"
+            />
+          </div>
+        </UiCard>
         
-        <!-- Add our typed counter component -->
-        <VisitCounter />
+        <UiCard padding="lg" shadow="sm">
+          <template #header>
+            <div class="flex items-center justify-between">
+              <h3 class="text-xl font-semibold text-gray-900">Visit Counter</h3>
+              <UiButton 
+                variant="outline" 
+                size="sm" 
+                label="Reset" 
+                @click="resetCounter"
+              />
+            </div>
+          </template>
+          
+          <VisitCounter />
+          
+          <template #footer>
+            <p class="text-sm text-gray-500">Footer slot content</p>
+          </template>
+        </UiCard>
       </div>
 
       <div class="text-center">
-        <NuxtLink 
-          to="/about" 
-          class="inline-block bg-blue-500 hover:bg-blue-600 text-white font-bold py-3 px-8 rounded-lg transition-colors duration-200"
-        >
-          Learn More About Us
-        </NuxtLink>
+        <UiButton 
+          variant="primary" 
+          size="lg" 
+          label="Go to About Page"
+          @click="navigateToAbout"
+        />
       </div>
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
-// TypeScript: We can type page components too
-// This runs on the server side in Nuxt
-console.log('Home page loaded at:', new Date().toISOString())
+// Composables are auto-imported in Nuxt
+const router = useRouter()
+
+const handleButtonClick = (event: MouseEvent): void => {
+  console.log('Button clicked!', event)
+  // You could show a notification, call an API, etc.
+}
+
+const resetCounter = (): void => {
+  // We'll implement this when we learn state management
+  console.log('Reset counter clicked')
+}
+
+const navigateToAbout = (): void => {
+  router.push('/about')
+}
 </script>

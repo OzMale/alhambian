@@ -10,65 +10,52 @@
 
         <!-- Desktop Navigation Links -->
         <div class="hidden md:flex items-center space-x-8">
-          <NuxtLink 
-            to="/" 
-            class="text-gray-600 hover:text-blue-500 font-medium transition-colors duration-200"
-            :class="{ 'text-blue-500 border-b-2 border-blue-500': $route.path === '/' }"
-          >
+          <NuxtLink to="/" class="text-gray-600 hover:text-blue-500 font-medium transition-colors duration-200"
+            :class="{ 'text-blue-500 border-b-2 border-blue-500': $route.path === '/' }">
             Home
           </NuxtLink>
-          <NuxtLink 
-            to="/about" 
-            class="text-gray-600 hover:text-blue-500 font-medium transition-colors duration-200"
-            :class="{ 'text-blue-500 border-b-2 border-blue-500': $route.path === '/about' }"
-          >
+          <NuxtLink to="/about" class="text-gray-600 hover:text-blue-500 font-medium transition-colors duration-200"
+            :class="{ 'text-blue-500 border-b-2 border-blue-500': $route.path === '/about' }">
             About
+          </NuxtLink>
+
+          <NuxtLink to="/composables-demo"
+            class="text-gray-600 hover:text-blue-500 font-medium transition-colors duration-200"
+            :class="{ 'text-blue-500 border-b-2 border-blue-500': $route.path === '/composables-demo' }">
+            Composables
           </NuxtLink>
         </div>
 
         <!-- Mobile menu button -->
         <div class="md:hidden">
-          <button 
-            @click="toggleMobileMenu"
-            class="text-gray-600 hover:text-blue-500 transition-colors duration-200"
-            aria-label="Toggle mobile menu"
-          >
+          <button @click="toggleMobileMenu" class="text-gray-600 hover:text-blue-500 transition-colors duration-200"
+            aria-label="Toggle mobile menu">
             <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path 
-                v-if="isMobileMenuOpen" 
-                stroke-linecap="round" stroke-linejoin="round" stroke-width="2" 
-                d="M6 18L18 6M6 6l12 12"
-              ></path>
-              <path 
-                v-else
-                stroke-linecap="round" stroke-linejoin="round" stroke-width="2" 
-                d="M4 6h16M4 12h16M4 18h16"
-              ></path>
+              <path v-if="isMobileMenuOpen" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M6 18L18 6M6 6l12 12"></path>
+              <path v-else stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16">
+              </path>
             </svg>
           </button>
         </div>
       </div>
 
       <!-- Mobile Menu (conditionally rendered) -->
-      <div 
-        v-if="isMobileMenuOpen"
-        class="md:hidden border-t border-gray-200 py-4 space-y-4"
-      >
-        <NuxtLink 
-          to="/" 
-          @click="closeMobileMenu"
+      <div v-if="isMobileMenuOpen" class="md:hidden border-t border-gray-200 py-4 space-y-4">
+        <NuxtLink to="/" @click="closeMobileMenu"
           class="block text-gray-600 hover:text-blue-500 font-medium transition-colors duration-200"
-          :class="{ 'text-blue-500': $route.path === '/' }"
-        >
+          :class="{ 'text-blue-500': $route.path === '/' }">
           Home
         </NuxtLink>
-        <NuxtLink 
-          to="/about" 
-          @click="closeMobileMenu"
+        <NuxtLink to="/about" @click="closeMobileMenu"
           class="block text-gray-600 hover:text-blue-500 font-medium transition-colors duration-200"
-          :class="{ 'text-blue-500': $route.path === '/about' }"
-        >
+          :class="{ 'text-blue-500': $route.path === '/about' }">
           About
+        </NuxtLink>
+                <NuxtLink to="/about" @click="closeMobileMenu"
+          class="block text-gray-600 hover:text-blue-500 font-medium transition-colors duration-200"
+          :class="{ 'text-blue-500': $route.path === '/composables-demo' }">
+          Composables
         </NuxtLink>
       </div>
     </div>
