@@ -2,16 +2,17 @@
 export default defineNuxtConfig({
   compatibilityDate: '2025-07-15',
   devtools: { enabled: true },
-   modules: ['@nuxtjs/tailwindcss'],
+  modules: ['@nuxtjs/tailwindcss'],
 
-   runtimeConfig: {
-    // Private keys (server only)
-    apiSecret: process.env.API_SECRET,
+  runtimeConfig: {
+    // Private keys (server only) - only available on server side
+    apiSecret: '', // Will be set via environment variables
     
     // Public keys (exposed to client)
     public: {
-      apiBaseUrl: process.env.API_BASE_URL || 'http://localhost:5092/api',
-      nodeEnv: process.env.NODE_ENV || 'development'
+      apiBaseUrl: '', // Will be auto-filled from NUXT_PUBLIC_API_BASE_URL
+      apiTimeout: '', // Will be auto-filled from NUXT_PUBLIC_API_TIMEOUT  
+      nodeEnv: ''     // Will be auto-filled from NUXT_PUBLIC_NODE_ENV
     }
   }
 })

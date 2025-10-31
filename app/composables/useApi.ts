@@ -6,7 +6,7 @@ interface ApiConfig {
 export function useApi() {
   const config = useRuntimeConfig()
 
-    // Debug: log the runtime config
+  // Debug: log the runtime config
   console.log('Runtime Config:', {
     apiBaseUrl: config.public.apiBaseUrl,
     nodeEnv: config.public.nodeEnv
@@ -47,11 +47,31 @@ export function useApi() {
     try {
       const response = await fetch(url, { ...defaults, ...options })
       
+      console.log('Response status:', response.status)
+      console.log('Response OK:', response.ok)
+      
       if (!response.ok) {
-        throw new Error(`HTTP error! status: ${response.status}`)
+        const errorText = await response.text().catch(() => 'No error details')
+        throw new Error(`HTTP error! status: ${response.status}, message: ${errorText}`)
       }
       
-      return await response.json() as T
+      // Handle empty responses (204 No Content, etc.)
+      const contentLength = response.headers.get('content-length')
+      const contentType = response.headers.get('content-type')
+      
+      console.log('Content-Length:', contentLength)
+      console.log('Content-Type:', contentType)
+      
+      // If response is empty or 204 No Content, return empty object
+      if (response.status === 204 || contentLength === '0' || !contentType?.includes('application/json')) {
+        console.log('Empty or non-JSON response detected, returning empty object')
+        return {} as T
+      }
+      
+      const responseData = await response.json() as T
+      console.log('Response data:', responseData)
+      return responseData
+      
     } catch (error) {
       console.error('API fetch error:', error)
       throw error
