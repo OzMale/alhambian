@@ -24,6 +24,11 @@
             :class="{ 'text-blue-500 border-b-2 border-blue-500': $route.path === '/composables-demo' }">
             Composables
           </NuxtLink>
+
+          <NuxtLink to="/api-demo" class="text-gray-600 hover:text-blue-500 font-medium transition-colors duration-200"
+            :class="{ 'text-blue-500 border-b-2 border-blue-500': $route.path === '/api-demo' }">
+            API
+          </NuxtLink>
         </div>
 
         <!-- Mobile menu button -->
@@ -47,15 +52,23 @@
           :class="{ 'text-blue-500': $route.path === '/' }">
           Home
         </NuxtLink>
+
         <NuxtLink to="/about" @click="closeMobileMenu"
           class="block text-gray-600 hover:text-blue-500 font-medium transition-colors duration-200"
           :class="{ 'text-blue-500': $route.path === '/about' }">
           About
         </NuxtLink>
-                <NuxtLink to="/about" @click="closeMobileMenu"
+
+        <NuxtLink to="/about" @click="closeMobileMenu"
           class="block text-gray-600 hover:text-blue-500 font-medium transition-colors duration-200"
           :class="{ 'text-blue-500': $route.path === '/composables-demo' }">
           Composables
+        </NuxtLink>
+
+        <NuxtLink to="/about" @click="closeMobileMenu"
+          class="block text-gray-600 hover:text-blue-500 font-medium transition-colors duration-200"
+          :class="{ 'text-blue-500': $route.path === '/api-demo' }">
+          API
         </NuxtLink>
       </div>
     </div>

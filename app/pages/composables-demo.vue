@@ -19,13 +19,6 @@
             </div>
           </div>
 
-          <!-- <div class="text-center">
-            <NuxtLink to="/"
-              class="inline-block bg-gray-500 hover:bg-gray-600 text-white font-bold py-3 px-8 rounded-lg transition-colors duration-200">
-              ← Back to Home
-            </NuxtLink>
-          </div> -->
-
           <div class="text-center p-4 bg-white rounded-lg border">
             <h3 class="font-semibold mb-2">Counter B</h3>
             <p class="text-2xl font-bold text-green-600">{{ counterB.count }}</p>
